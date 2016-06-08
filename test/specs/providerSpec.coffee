@@ -98,8 +98,7 @@ describe 'builder.provider', ->
                 placeholder: ''
                 editable: yes
                 required: no
-                validation: '/.*/'
-                validationOptions: []
+                validation: 'required'
                 options: []
                 arrayToText: no
                 template: "<div class='form-group'></div>"
@@ -116,8 +115,7 @@ describe 'builder.provider', ->
                 placeholder: 'placeholder'
                 editable: no
                 required: yes
-                validation: '/regexp/'
-                validationOptions: []
+                validation: 'required'
                 options: ['value one']
                 arrayToText: yes
                 template: "<div class='form-group'></div>"
@@ -130,8 +128,7 @@ describe 'builder.provider', ->
                 placeholder: 'placeholder'
                 editable: no
                 required: yes
-                validation: '/regexp/'
-                validationOptions: []
+                validation: 'required'
                 options: ['value one']
                 arrayToText: yes
                 template: "<div class='form-group'></div>"
@@ -157,7 +154,7 @@ describe 'builder.provider', ->
                 placeholder: 'placeholder'
                 editable: yes
                 required: yes
-                validation: '/regexp/'
+                validation: 'required'
                 options: ['value one']
                 arrayToText: yes
                 template: "<div class='form-group'></div>"
@@ -175,7 +172,7 @@ describe 'builder.provider', ->
                 placeholder: 'placeholder'
                 options: ['value one']
                 required: yes
-                validation: '/regexp/'
+                validation: 'required'
             .toEqual formObject
 
         it '$builderProvider.convertFormObject()', inject ($builder) ->
@@ -191,7 +188,7 @@ describe 'builder.provider', ->
                 placeholder: 'placeholder A'
                 options: ['value']
                 required: no
-                validation: '/.*/'
+                validation: 'required'
 
             expect
                 id: undefined
@@ -203,7 +200,7 @@ describe 'builder.provider', ->
                 placeholder: 'placeholder A'
                 options: ['value']
                 required: no
-                validation: '/.*/'
+                validation: 'required'
             .toEqual formObject
 
 
@@ -230,7 +227,7 @@ describe 'builder.provider', ->
                 placeholder: ''
                 editable: yes
                 required: no
-                validation: '/.*/'
+                validation: 'required'
                 options: []
                 arrayToText: no
                 template: "<div class='form-group'></div>"
@@ -244,8 +241,7 @@ describe 'builder.provider', ->
                 placeholder: ''
                 editable: yes
                 required: no
-                validation: '/.*/'
-                validationOptions: []
+                validation: 'required'
                 options: []
                 arrayToText: no
                 template: "<div class='form-group'></div>"

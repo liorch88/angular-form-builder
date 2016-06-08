@@ -10,8 +10,6 @@ module.exports = (config) ->
             'test/lib/jquery/dist/jquery.min.js'
             'test/lib/angular/angular.min.js'
             'test/lib/angular-mocks/angular-mocks.js'
-            'test/lib/angular-validator/dist/angular-validator.js'
-            'test/lib/angular-validator/dist/angular-validator-rules.js'
             'dist/angular-form-builder.js'
             'dist/angular-form-builder-components.js'
             'test/specs/*.coffee'

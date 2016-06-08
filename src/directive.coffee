@@ -6,7 +6,7 @@ angular.module 'builder.directive', [
     'builder.provider'
     'builder.controller'
     'builder.drag'
-    'validator'
+    'validation'
 ]
 
 
@@ -116,7 +116,6 @@ angular.module 'builder.directive', [
     $builder = $injector.get '$builder'
     $drag = $injector.get '$drag'
     $compile = $injector.get '$compile'
-    $validator = $injector.get '$validator'
 
     restrict: 'A'
     controller: 'fbFormObjectEditableController'
@@ -173,10 +172,9 @@ angular.module 'builder.directive', [
                 ###
                 The save event of the popover.
                 ###
-                $event.preventDefault()
-                $validator.validate(scope).success ->
-                    popover.isClickedSave = yes
-                    $(element).popover 'hide'
+                $event.preventDefault();
+                popover.isClickedSave = yes
+                $(element).popover 'hide'
                 return
             remove: ($event) ->
                 ###

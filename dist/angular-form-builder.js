@@ -26,7 +26,6 @@
         2. Setup optionsText with formObject.options.
         3. Watch scope.label, .description, .placeholder, .required, .options then copy to origin formObject.
         4. Watch scope.optionsText then convert to scope.options.
-        5. setup validationOptions
          */
         var component;
         copyObjectToScope(formObject, $scope);
@@ -55,8 +54,7 @@
           })();
           return $scope.inputText = $scope.options[0];
         });
-        component = $builder.components[formObject.component];
-        return $scope.validationOptions = component.validationOptions;
+        return component = $builder.components[formObject.component];
       };
       return $scope.data = {
         model: null,
@@ -169,7 +167,7 @@
 }).call(this);
 
 (function() {
-  angular.module('builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validator']).directive('fbBuilder', [
+  angular.module('builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validation']).directive('fbBuilder', [
     '$injector', function($injector) {
       var $builder, $drag;
       $builder = $injector.get('$builder');
@@ -267,11 +265,10 @@
     }
   ]).directive('fbFormObjectEditable', [
     '$injector', function($injector) {
-      var $builder, $compile, $drag, $validator;
+      var $builder, $compile, $drag;
       $builder = $injector.get('$builder');
       $drag = $injector.get('$drag');
       $compile = $injector.get('$compile');
-      $validator = $injector.get('$validator');
       return {
         restrict: 'A',
         controller: 'fbFormObjectEditableController',
@@ -332,10 +329,8 @@
               The save event of the popover.
                */
               $event.preventDefault();
-              $validator.validate(scope).success(function() {
-                popover.isClickedSave = true;
-                return $(element).popover('hide');
-              });
+              popover.isClickedSave = true;
+              $(element).popover('hide');
             },
             remove: function($event) {
 
@@ -993,7 +988,7 @@
       "default": []
     };
     this.convertComponent = function(name, component) {
-      var result, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+      var result, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
       result = {
         name: name,
         group: (_ref = component.group) != null ? _ref : 'Default',
@@ -1002,10 +997,9 @@
         placeholder: (_ref3 = component.placeholder) != null ? _ref3 : '',
         editable: (_ref4 = component.editable) != null ? _ref4 : true,
         required: (_ref5 = component.required) != null ? _ref5 : false,
-        validation: (_ref6 = component.validation) != null ? _ref6 : '/.*/',
-        validationOptions: (_ref7 = component.validationOptions) != null ? _ref7 : [],
-        options: (_ref8 = component.options) != null ? _ref8 : [],
-        arrayToText: (_ref9 = component.arrayToText) != null ? _ref9 : false,
+        validation: component.validation,
+        options: (_ref6 = component.options) != null ? _ref6 : [],
+        arrayToText: (_ref7 = component.arrayToText) != null ? _ref7 : false,
         template: component.template,
         templateUrl: component.templateUrl,
         popoverTemplate: component.popoverTemplate,
@@ -1096,8 +1090,7 @@
             placeholder: {string} The placeholder of the input.
             editable: {bool} Is the form object editable?
             required: {bool} Is the form object required?
-            validation: {string} angular-validator. "/regex/" or "[rule1, rule2]". (default is RegExp(.*))
-            validationOptions: {array} [{rule: angular-validator, label: 'option label'}] the options for the validation. (default is [])
+            validation: {string} angular-validation. rule1, rule2
             options: {array} The input options.
             arrayToText: {bool} checkbox could use this to convert input (default is no)
             template: {string} html template
@@ -1155,7 +1148,7 @@
             placeholder: {string} The form object placeholder.
             options: {array} The form object options.
             required: {bool} Is the form object required? (default is no)
-            validation: {string} angular-validator. "/regex/" or "[rule1, rule2]".
+            validation: {string} angular-validation rule1, rule2
             [index]: {int} The form object index. It will be updated by $builder.
         @return: The form object.
          */

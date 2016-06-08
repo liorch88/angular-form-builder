@@ -46,8 +46,7 @@ angular.module 'builder.provider', []
             placeholder: component.placeholder ? ''
             editable: component.editable ? yes
             required: component.required ? no
-            validation: component.validation ? '/.*/'
-            validationOptions: component.validationOptions ? []
+            validation: component.validation
             options: component.options ? []
             arrayToText: component.arrayToText ? no
             template: component.template
@@ -117,8 +116,7 @@ angular.module 'builder.provider', []
             placeholder: {string} The placeholder of the input.
             editable: {bool} Is the form object editable?
             required: {bool} Is the form object required?
-            validation: {string} angular-validator. "/regex/" or "[rule1, rule2]". (default is RegExp(.*))
-            validationOptions: {array} [{rule: angular-validator, label: 'option label'}] the options for the validation. (default is [])
+            validation: {string} angular-validation. rule1, rule2
             options: {array} The input options.
             arrayToText: {bool} checkbox could use this to convert input (default is no)
             template: {string} html template
@@ -158,7 +156,7 @@ angular.module 'builder.provider', []
             placeholder: {string} The form object placeholder.
             options: {array} The form object options.
             required: {bool} Is the form object required? (default is no)
-            validation: {string} angular-validator. "/regex/" or "[rule1, rule2]".
+            validation: {string} angular-validation rule1, rule2
             [index]: {int} The form object index. It will be updated by $builder.
         @return: The form object.
         ###

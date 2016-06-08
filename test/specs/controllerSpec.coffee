@@ -28,7 +28,6 @@ describe 'builder.controller', ->
                     placeholder: 'placeholder'
                     required: no
                     options: ['value one', 'two']
-                    validation: '/.*/'
                 $scope.setupScope formObject
 
             it '$scope.setupScope(formObject) copy properties from formObject without `$$hashKey`', ->
@@ -64,7 +63,7 @@ describe 'builder.controller', ->
                 $scope.$digest()
                 expect(formObject.options).toEqual $scope.options
 
-                $scope.validation = '/regex/'
+                $scope.validation = 'required'
                 $scope.$digest()
                 expect(formObject.validation).toEqual $scope.validation
 
@@ -74,8 +73,6 @@ describe 'builder.controller', ->
                 expect(['one', 'two']).toEqual $scope.options
                 expect('one').toEqual $scope.inputText
 
-            it '$scope.setupScope(formObject) setup validationOptions', ->
-                expect([]).toEqual $scope.validationOptions
 
         describe '$scope.data', ->
             formObject = null
@@ -89,7 +86,7 @@ describe 'builder.controller', ->
                     placeholder: 'placeholder'
                     required: no
                     options: ['value one', 'two']
-                    validation: '/.*/'
+                    validation: 'required'
                 $scope.setupScope formObject
 
             it '$scope.data.model is null', ->
@@ -103,7 +100,7 @@ describe 'builder.controller', ->
                     placeholder: 'placeholder'
                     required: no
                     optionsText: 'value one\ntwo'
-                    validation: '/.*/'
+                    validation: 'required'
                 .toEqual $scope.data.model
 
             it '$scope after call $scope.data.rollback()', ->

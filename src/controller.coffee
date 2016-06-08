@@ -28,7 +28,6 @@ angular.module 'builder.controller', ['builder.provider']
         2. Setup optionsText with formObject.options.
         3. Watch scope.label, .description, .placeholder, .required, .options then copy to origin formObject.
         4. Watch scope.optionsText then convert to scope.options.
-        5. setup validationOptions
         ###
         copyObjectToScope formObject, $scope
 
@@ -48,7 +47,6 @@ angular.module 'builder.controller', ['builder.provider']
             $scope.inputText = $scope.options[0]
 
         component = $builder.components[formObject.component]
-        $scope.validationOptions = component.validationOptions
 
     $scope.data =
         model: null
