@@ -6,7 +6,6 @@ angular.module 'builder.directive', [
     'builder.provider'
     'builder.controller'
     'builder.drag'
-    'validation'
 ]
 
 
@@ -366,12 +365,6 @@ angular.module 'builder.directive', [
         , yes
 
         scope.$watch '$component.template', (template) ->
-            return if not template
-            $template = $(template)
-            # add validator
-            $input = $template.find "[ng-model='inputText']"
-            $input.attr
-                validator: '{{validation}}'
             # assign template to current dome
             element.html template
 

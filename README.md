@@ -12,8 +12,6 @@ This is an AngularJS form builder written in [CoffeeScript](http://coffeescript.
 1. [AngularJS](http://angularjs.org/) 1.2.18
 2. [jQuery](http://jquery.com/) 2.1.0
 3. [Bootstrap 3](http://getbootstrap.com/)
-4. [angular-validation](https://github.com/huei90/angular-validation)
-
 
 
 
@@ -63,7 +61,7 @@ $builderProvider.registerComponent = (name, component={}) ->
         placeholder: {string} The placeholder of the input.
         editable: {bool} Is the form object editable?
         required: {bool} Is the form object required?
-        validation: {string} angular-validation. rule, rule
+        validation: {string} angular-validation. rule, rule. will be copy as-is to the scope. nothing more. you can use it along with angular-validation.
         options: {array} The input options.
         arrayToText: {bool} checkbox could use this to convert input (default is no)
         template: {string} html template
@@ -180,7 +178,7 @@ $builder.removeFormObject = (name, index) =>
 ####fb-components
 >
 ```coffee
-a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validation']
+a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag']
 fbComponents = ->
     ###
     You could use `fb-components` to render the components view.
@@ -211,7 +209,7 @@ a.directive 'fbComponents', fbComponents
 ####fb-builder
 >
 ```coffee
-a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validation']
+a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag']
 fbBuilder = ($injector) ->
     ###
     You could use `fb-builder="formName"` to render the builder view.
@@ -238,7 +236,7 @@ a.directive 'fbBuilder', fbBuilder
 ####fb-form
 >
 ```coffee
-a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validation']
+a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag']
 fbForm = ($injector) ->
     ###
     You could use `fb-form="formName"` to render the form view for end-users.

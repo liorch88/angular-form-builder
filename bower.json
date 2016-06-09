@@ -22,7 +22,6 @@
   "dependencies": {
     "angular": ">=1.4.1",
     "angular-mocks": ">=1.4.1",
-    "angular-validation": ">=1.4.1",
     "jquery": "~2.1.0"
   }
 }
