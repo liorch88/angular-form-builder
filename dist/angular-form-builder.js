@@ -508,7 +508,7 @@
             return scope.copyObjectToScope(scope.formObject);
           }, true);
           scope.$watch('$component.template', function(template) {
-            var $input, $template, view;
+            var $input, $template;
             if (!template) {
               return;
             }
@@ -517,8 +517,8 @@
             $input.attr({
               validator: '{{validation}}'
             });
-            view = $compile($template)(scope);
-            return $(element).html(view);
+            element.html(template);
+            return $compile(element.contents())(scope);
           });
           if (!scope.$component.arrayToText && scope.formObject.options.length > 0) {
             scope.inputText = scope.formObject.options[0];

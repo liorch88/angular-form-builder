@@ -372,9 +372,11 @@ angular.module 'builder.directive', [
             $input = $template.find "[ng-model='inputText']"
             $input.attr
                 validator: '{{validation}}'
-            # compile
-            view = $compile($template) scope
-            $(element).html view
+            # assign template to current dome
+            element.html template
+
+            #compile the new dom's child nodes and link to current scope
+            $compile(element.contents()) scope
 
         # select the first option
         if not scope.$component.arrayToText and scope.formObject.options.length > 0
